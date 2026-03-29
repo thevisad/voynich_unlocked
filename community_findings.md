@@ -1,3 +1,7 @@
+[← Back to Overview](readme.md)
+
+---
+
 # Voynich Manuscript: Structural Analysis — Community Findings Release
 
 **Date:** March 2026
@@ -193,3 +197,7 @@ If you believe any metric presented here is inconsistent with the underlying tra
 
 *Analysis conducted on the publicly available EVA interlinear transcription of the Voynich manuscript.*
 *All metrics are computed from corpus statistics. No external data sources were used.*
+
+---
+
+[← Back to Overview](readme.md)

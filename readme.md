@@ -1,184 +1,165 @@
-🧠 Voynich Unlocked — Structural Analysis of the Voynich Manuscript
+# Voynich Unlocked
+### Structural Analysis of the Voynich Manuscript
 
-Status: Active Research
-Corpus: 37,671 tokens across 226 folios (EVA transcription)
-Focus: Structural analysis — not translation
+---
 
-🚨 What This Is
+> **This is not a decipherment.** It is a demonstration that the manuscript contains a consistent, measurable, non-random structural system — and that this system must be explained.
 
-This repository presents empirically validated structural findings about the Voynich Manuscript.
+---
 
-It does not claim:
+| Field | Detail |
+|---|---|
+| Status | Active Research |
+| Corpus | 37,671 tokens · 226 folios (EVA transcription) |
+| Focus | Structural analysis — not translation |
+| Release | March 2026 |
 
-a decipherment
-a translation
-a known language mapping
+---
 
-Instead, it demonstrates:
+## What Was Found
 
-The manuscript encodes a consistent, measurable operator-driven structural system
+The Voynich corpus is best modeled as a **three-role structural system**, not a flat sequence of words.
 
-🔬 Core Discovery
+```
+[ Role A ]  ──operator──>  [ Role B ]  ──>  [ Role C ]
+ Variable      (2 families,    Operator        Terminal
+               mutually        Slot            Outcome
+               exclusive)
+```
 
-The Voynich corpus is best modeled as a three-role structural system, not a flat sequence of words.
+**The two operator families never co-occur in the same structural slot.**
+This holds without exception across the entire corpus.
 
-Each unit follows a pattern:
+---
 
-Role A (Context / Variable)
-Role B (Operator) ← two mutually exclusive families
-Role C (Outcome / Terminal)
-Key Property
+## Key Results at a Glance
 
-👉 The two operator families never co-occur in the same structural slot
-👉 This holds across the entire corpus
+### Operator Differentiation
 
-📊 Key Results
-1. Operator Differentiation (Critical Finding)
+For every testable context word (Role A), the two operators route the outcome (Role C) to completely different distributions:
 
-Given the same context (Role A):
+| Metric | Value |
+|---|---|
+| Contexts tested | 43 word-family · 60 cluster-level |
+| Mean JS divergence | **0.838** (word-family) · **0.845** (cluster) |
+| Range | \[0.48 → 1.00\] |
+| Near-identical outcomes (JS < 0.05) | **0 / 43** |
+| High-divergence outcomes (JS > 0.30) | **43 / 43** |
 
-👉 The two operators produce completely different outcome distributions (Role C)
+> JS divergence = 0 means the operators produce identical outcomes.
+> JS divergence = 1 means completely different outcomes.
+> Null models (shuffled/randomized corpus) score below 0.1.
 
-Metric	Value
-Contexts tested	43
-Mean JS divergence	0.838
-Range	[0.48 → 1.00]
-Overlap cases (JS < 0.05)	0 / 43
+---
 
-✔ Result holds at:
+### Two-Tier Encoding
 
-word-family level
-structural cluster level
-2. Null Model Rejection
+| Layer | Value |
+|---|---|
+| Unique surface word types | 8,231 |
+| Unique structural patterns | 836 |
+| Compression ratio | **9.84×** |
+| Entropy reduction | **33.9%** (3.54 bits) |
 
-Tested against:
+The manuscript's surface complexity conceals a far smaller structural inventory. Folios with near-identical structural profiles (JS = 0.094) share only ~20% of their surface words — **structure is more stable than lexicon**.
 
-random token shuffle
-bigram-preserving Markov models
-frequency-matched substitution models
+---
 
-👉 Observed behavior does not reproduce under any null model
+### Non-Commutative Operator Chains
 
-Observed:
+Order matters. The system is not linear:
 
-JS ≈ 0.8–1.0
+| Transition | Entropy Change | Count |
+|---|---|---|
+| A → B | +2.708 bits | 631 |
+| B → A | +3.524 bits | 315 |
+| B → B | **−1.512 bits** (collapse) | 327 |
+| A → A | +0.443 bits | 20 |
 
-Null models:
+B→B is the only combination that *reduces* entropy — consistent with a structured compositional system, not a substitution cipher or random process.
 
-JS < 0.1
-3. Two-Tier Encoding System
-Measure	Value
-Surface word types	8,231
-Structural patterns	836
-Compression ratio	9.84×
-Entropy reduction	33.9%
+---
 
-👉 The manuscript is structurally compressed beneath surface variation
+### Null Model Rejection
 
-4. Non-Commutative Operator Chains
+Tested against three model classes:
 
-Order matters:
+- Random token shuffling
+- Bigram-preserving Markov models
+- Frequency-matched substitution models
 
-Transition	ΔEntropy
-A → B	+2.708 bits
-B → A	+3.524 bits
-B → B	−1.512 bits
+**Observed JS ≈ 0.8–1.0.** All null models collapse to **JS < 0.1**.
+The observed behavior does not reproduce under any null model.
 
-👉 The system is non-linear and non-commutative
+---
 
-📈 Visual Evidence
+## What This Does NOT Claim
 
-All observed values cluster at high divergence
-Clear gap from null model region
-No overlap
+```
+NOT claimed                         IS established
+──────────────────────────────────  ────────────────────────────────────
+A decipherment                      Internal structural regularity
+A translation                       Operator mutual exclusion
+A known language mapping            Non-random, context-dependent behavior
+Any semantic referent               Functionally distinct operator roles
+Any known writing system match      Non-commutative operator chaining
+```
 
-👉 The operators are functionally distinct in every tested context
+---
 
-🧠 Interpretation (Strictly Limited)
+## Visual Evidence
 
-This work establishes:
+The JS divergence histogram is the clearest summary of the finding:
 
-✔ Internal structure
-✔ Operator differentiation
-✔ Non-random behavior
-✔ Context-dependent transformation
+![JS Divergence Distribution](js_divergence_histogram.png)
 
-This work does NOT establish:
+*Each bar = one context word (Role A). All 43 bars score > 0.48 — far above where null models score. The operators are doing different things across the entire corpus.*
 
-❌ meaning
-❌ translation
-❌ linguistic identity
+---
 
-🧪 Reproducibility Targets
+## Reproducibility
 
-You can independently verify:
+You can independently verify these claims using the public EVA interlinear transcription:
 
-Operator mutual exclusion
-Conditional distributions P(C | A, operator)
-Jensen-Shannon divergence across contexts
-Entropy differences between structure and surface layers
-📂 Repository Structure (Suggested)
-voynich_unlocked/
-├── data/
-│   ├── eva_transcription/
-│   ├── page_exports/
-│
-├── analysis/
-│   ├── structural_patterns/
-│   ├── operator_analysis/
-│   ├── entropy/
-│
-├── plots/
-│   ├── js_divergence_histogram.png
-│
-├── docs/
-│   ├── structural_analysis.md
-│   ├── methodology_notes.md (optional/private)
-│
-├── scripts/
-│   ├── compute_js.py
-│   ├── build_patterns.py
-│   ├── plot_results.py
-│
-└── README.md
-⚠️ Important Notes
-Methodology is intentionally not fully disclosed at this stage
-All results are derived from publicly available EVA transcription data
-This is a structural claim, not a decipherment
-🧠 Research Direction
+1. Compute operator co-occurrence distributions (Role B mutual exclusion)
+2. Measure conditional distributions P(C | A, operator) for each Role A context
+3. Calculate Jensen-Shannon divergence across the 43 qualifying contexts
+4. Compare entropy between the surface-word layer and structural-pattern layer
 
-Current work:
+**If you can reproduce JS ≈ 0.838 across 43 contexts under a null model — that directly challenges this work.**
 
-Structural validation ✔
-Operator differentiation ✔
+---
 
-Next:
+## Full Community Findings
 
-VOYN-050: Mapping text → visual regions
-Operator grounding
-Semantic constraints (if any exist)
-🤝 Contributing / Review
+The detailed methodology notes, full metric tables, and peer review invitation are in the companion document:
+
+### [Community Findings Release →](community_findings.md)
+
+Includes:
+- Complete validation metric tables (Sections 2.1–2.7)
+- Latent state cluster analysis (60 clusters)
+- Null model robustness discussion
+- Invitation for independent replication and challenge
+
+---
+
+## Contributing / Review
 
 We welcome:
+- Independent replication attempts
+- Statistical critiques
+- Null model challenges
+- Alternative structural interpretations
 
-independent replication attempts
-statistical critiques
-null model challenges
+Open an issue or submit a pull request.
 
-If you can reproduce:
+---
 
-JS divergence ≈ 0.838 across 43 contexts under a null model
+## License
 
-👉 that would directly challenge this work
+TBD — MIT or research-use license recommended.
 
-📜 License
+---
 
-TBD (recommend MIT or research-use license)
-
-🚀 Final Statement
-
-This repository does not claim to solve the Voynich Manuscript.
-
-It demonstrates:
-
-The manuscript contains a consistent, non-random, operator-driven structural system that must be explained.
+*All metrics derived from the publicly available EVA interlinear transcription of the Voynich manuscript. No external data sources used.*
