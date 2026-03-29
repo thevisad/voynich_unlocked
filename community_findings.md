@@ -1,7 +1,3 @@
-[← Back to Overview](readme.md)
-
----
-
 # Voynich Manuscript: Structural Analysis — Community Findings Release
 
 **Date:** March 2026
@@ -18,7 +14,7 @@ We are releasing validation metrics — not methods — to invite scrutiny from 
 
 ---
 
-## I. Core Discovery: The Manuscript Encodes a Structured Operator System
+## I. Core Discovery: The Manuscript Encodes a Consistent Structural System with Operator-Like Elements
 
 The Voynich corpus is not best modeled as a sequence of lexical items. Statistical analysis reveals a **three-role structural system** in which word-level items function as typed slots within recurring templates. This structure is consistent across all 226 transcribed folios and all four folio sections.
 
@@ -28,7 +24,7 @@ Three roles are identifiable:
 - **Role B (Operator):** Slot occupied exclusively by two word families, in mutual exclusion
 - **Role C (Terminal):** Slot with a strongly concentrated distribution dominated by a small set of word families
 
-The two Role B families are never observed co-occupying the operator slot within the same structural unit. This mutual exclusion holds without exception across the full corpus.
+The two Role B families are not observed to co-occupy the operator slot within the same structural unit across the analyzed corpus.
 
 ---
 
@@ -110,6 +106,8 @@ If the operators were interchangeable — stylistic variants, noise, or redundan
 
 **Result:** In zero cases does Operator A produce the same outcome-word distribution as Operator B for the same context word. The operators route the text to systematically different destinations in every testable context — they are not interchangeable.
 
+This separation holds universally: no tested context produces overlapping outcome distributions between the two operators.
+
 ![JS Divergence Distribution](js_divergence_histogram.png)
 
 *Figure 1. Each bar represents one context word (Role A). The x-axis shows how differently the two operators select the following outcome word (Role C) — 0 means identical selection, 1 means completely different. All 43 word-family contexts and all 60 structural cluster contexts score above 0.48, far above where null models (shuffled/randomised corpus) score (<0.1, grey zone). The operators are consistently doing different things across the entire corpus.*
@@ -162,7 +160,7 @@ A key concern for any corpus-level structural claim is whether the observed patt
 - **Bigram-preserving Markov models:** Preserves local two-token transition probabilities; tests whether local ordering alone explains the observations
 - **Frequency-matched substitution models:** Preserves marginal token frequencies; isolates effects of pure frequency bias
 
-Preliminary results are consistent with the observed operator differentiation and entropy structure being incompatible with all three null classes. Observed JS divergence collapses to <0.1 under tested null models (summary; full details forthcoming).
+Preliminary results are consistent with the observed operator differentiation and entropy structure being incompatible with all three null classes. Observed JS divergence collapses to <0.1 under tested null models and does not reproduce the structured separation seen in the corpus (summary; full details forthcoming).
 
 ---
 
@@ -196,8 +194,5 @@ If you believe any metric presented here is inconsistent with the underlying tra
 ---
 
 *Analysis conducted on the publicly available EVA interlinear transcription of the Voynich manuscript.*
+*Corpus: Zandbergen–Landini EVA interlinear transcription (standard computational reference corpus).*
 *All metrics are computed from corpus statistics. No external data sources were used.*
-
----
-
-[← Back to Overview](readme.md)

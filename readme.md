@@ -27,8 +27,7 @@ The Voynich corpus is best modeled as a **three-role structural system**, not a 
                exclusive)
 ```
 
-**The two operator families never co-occur in the same structural slot.**
-This holds without exception across the entire corpus.
+**The two operator families are not observed to co-occupy the same structural slot across the analyzed corpus.**
 
 ---
 
@@ -88,8 +87,26 @@ Tested against three model classes:
 - Bigram-preserving Markov models
 - Frequency-matched substitution models
 
-**Observed JS ≈ 0.8–1.0.** All null models collapse to **JS < 0.1**.
-The observed behavior does not reproduce under any null model.
+**Observed JS ≈ 0.8–1.0.** All tested null models collapse to **JS < 0.1**.
+The observed behavior does not reproduce under tested null models.
+
+---
+
+## Why This Is Not Just a Markov Model
+
+A common objection is that patterns like these can emerge from simple n-gram or Markov models.
+
+**1. Operator mutual exclusion across 103 tested contexts**
+A Markov model has no mechanism for mutual exclusion of role occupants. The two Role B families do not co-occur in the operator slot. Markov sampling cannot produce this property — it would require an explicit constraint.
+
+**2. Non-commutativity**
+B→A and A→B produce different entropy changes (+3.524 vs +2.708 bits). B→B produces entropy *collapse* (−1.512 bits). N-gram models are symmetric and additive by construction — they cannot reproduce asymmetric, order-dependent entropy structure.
+
+**3. Consistent operator differentiation across all 43 contexts**
+The same two operators systematically route to different outcome distributions in every testable context — JS > 0.48 in all 43 cases. Shuffled and Markov null models collapse this to JS < 0.1. The separation is not a local artifact.
+
+**4. Pattern abstraction over surface variation**
+8,231 surface word types reduce to 836 structural patterns (9.84× compression). The manuscript's regularities operate at an abstract structural level, not at the raw token level a Markov model operates on.
 
 ---
 
@@ -109,7 +126,7 @@ Any known writing system match      Non-commutative operator chaining
 
 ## Visual Evidence
 
-The JS divergence histogram is the clearest summary of the finding:
+The JS divergence histogram is the clearest summary of the operator finding:
 
 ![JS Divergence Distribution](js_divergence_histogram.png)
 
@@ -162,4 +179,4 @@ TBD — MIT or research-use license recommended.
 
 ---
 
-*All metrics derived from the publicly available EVA interlinear transcription of the Voynich manuscript. No external data sources used.*
+*All metrics derived from the publicly available Zandbergen–Landini EVA interlinear transcription of the Voynich manuscript. No external data sources used.*
